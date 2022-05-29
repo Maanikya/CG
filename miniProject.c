@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 
 void WindowInit()
 {
-	glutInitWindowSize(1920, 1080);
+	glutInitWindowSize(1280, 720);
 	glutInitWindowPosition(300, 500);
 	glutCreateWindow("Mini Project");
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
