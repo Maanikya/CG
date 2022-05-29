@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <GL/glut.h>
-#include "Intro.h"
+//#include "Intro.h"
 #include "Buildings.h"
 
 void WindowInit();
@@ -25,11 +25,13 @@ void WindowInit()
 	glutInitWindowPosition(0, 0);
 	glutCreateWindow("Mini Project");
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-	glClearColor(0.0, 0.0, 0.0, 0.0);
+	//glClearColor(0.0, 0.0, 0.0, 0.0);
+	glClearColor(0.62, 0.69, 0.82, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	glOrtho(0.0, 100.0, 0.0, 100.0, 0.0, 100.0);
-	glutDisplayFunc(Intro);
+	//glutDisplayFunc(Intro);
+	glutDisplayFunc(Buildings);
 	glutMainLoop();
 }
