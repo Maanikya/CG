@@ -1,15 +1,8 @@
 #include<stdio.h>
+#include<GL/glut.h>
 
 void Buildings()
-{
-	glClear(GL_COLOR_BUFFER_BIT);	
-	
-	glBegin(GL_LINES);
-	glColor3f(0.075, 0.157, 0.212);
-	glVertex2i(0, 43);
-	glVertex2i(100, 43);
-	glEnd();
-	
+{	
 	glBegin(GL_POLYGON);				//Building 1
 	glColor3f(0.34, 0.46, 0.52);	
 	glVertex2f(2, 40);
