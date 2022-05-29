@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <GL/glut.h>
-#include "Display.h"
+#include "Headers/Display.h"
 
 void WindowInit();
 

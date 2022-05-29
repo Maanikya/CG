@@ -24,12 +24,12 @@ HostApplication=
 UseCustomMakefile=0
 CustomMakefile=
 CommandLine=
-Folders=
+Folders=Headers
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
-CompilerSettings=0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;8;0;0;0
-UnitCount=3
+CompilerSettings=0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;8;0;0;0
+UnitCount=5
 
 [VersionInfo]
 Major=1
@@ -61,9 +61,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit2]
-FileName=Intro.h
+FileName=Headers\Background.h
 CompileCpp=0
-Folder=
+Folder=Headers
 Compile=1
 Link=1
 Priority=1000
@@ -71,9 +71,29 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=Buildings.h
+FileName=Headers\Buildings.h
 CompileCpp=0
-Folder=
+Folder=Headers
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit4]
+FileName=Headers\Display.h
+CompileCpp=0
+Folder=Headers
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit5]
+FileName=Headers\Intro.h
+CompileCpp=0
+Folder=Headers
 Compile=1
 Link=1
 Priority=1000
