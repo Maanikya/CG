@@ -1,6 +1,6 @@
 # CG
 
-6th Semester CG Mini Project
+6th Semester Computer Graphics Mini Project
 
 Maanikya - 4MT19CS073
 
