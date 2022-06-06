@@ -63,5 +63,17 @@ void Buildings()
 	glVertex2f(4.5, 52.0);
 	glEnd();
 	
+	glBegin(GL_POLYGON);				//Building 2
+	glColor3f(0.34, 0.46, 0.52);	
+	glVertex2f(6, 40);
+	glVertex2f(6, 55);
+	glVertex2f(6.6, 55.0);
+	glVertex2f(6.6, 55.2);
+	glVertex2f(8.4, 55.2);
+	glVertex2f(8.4, 55.0);
+	glVertex2f(9, 55);
+	glVertex2f(9, 40);
+	glEnd();
+	
 	glFlush();
 }
