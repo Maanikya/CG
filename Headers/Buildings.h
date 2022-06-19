@@ -79,7 +79,7 @@ void Buildings()
 		glEnd();
 	}
 	
-	glBegin(GL_POLYGON);				//Building 3
+	glBegin(GL_POLYGON);				//Building 3 Part 1
 	glColor3ub(46, 65, 81);
 	glVertex2f(19.5, 34);
 	glVertex2f(19.5, 48);
@@ -87,12 +87,80 @@ void Buildings()
 	glVertex2f(20, 34);
 	glEnd();
 	
-	glBegin(GL_POLYGON);
+	glBegin(GL_POLYGON);				//Building 3 Part 2
 	glColor3f(0.34, 0.46, 0.52);
 	glVertex2f(20, 34);
 	glVertex2f(20, 48.5);
 	glVertex2f(20.5, 48.5);
 	glVertex2f(20.5, 34);
+	glEnd();
+	
+	glBegin(GL_POLYGON);				//Building 3 Part 3
+	glColor3ub(79, 92, 100);
+	glVertex2f(20.5, 34);
+	glVertex2f(20.5, 48);
+	glVertex2f(21.5, 48);
+	glVertex2f(21.5, 34);
+	glEnd();
+	
+	for(float y=0; y<13; y+=1.2) {
+		glBegin(GL_POLYGON);				//Building 3 Windows Right
+		glColor3f(0.161, 0.188, 0.2);	
+		glVertex2f(20.6, 34.4+y);
+		glVertex2f(20.6, 34.6+y);
+		glVertex2f(21.4, 34.6+y);
+		glVertex2f(21.4, 34.4+y);
+		glEnd();
+	}
+	
+	glBegin(GL_POLYGON);				//Building 4 Part 1
+	glColor3ub(46, 65, 81);
+	glVertex2f(23.5, 34);
+	glVertex2f(23.5, 48);
+	glVertex2f(24, 48);
+	glVertex2f(24, 34);
+	glEnd();
+	
+	glBegin(GL_POLYGON);				//Building 4 Part 2
+	glColor3f(0.34, 0.46, 0.52);
+	glVertex2f(24, 34);
+	glVertex2f(24, 48.5);
+	glVertex2f(24.5, 48.5);
+	glVertex2f(24.5, 34);
+	glEnd();
+	
+	glBegin(GL_POLYGON);				//Building 4 Part 3
+	glColor3ub(79, 92, 100);
+	glVertex2f(24.5, 34);
+	glVertex2f(24.5, 48);
+	glVertex2f(25.5, 48);
+	glVertex2f(25.5, 34);
+	glEnd();
+	
+	for(float y=0; y<13; y+=1.2) {
+		glBegin(GL_POLYGON);				//Building 4 Windows Right
+		glColor3f(0.161, 0.188, 0.2);	
+		glVertex2f(24.6, 34.4+y);
+		glVertex2f(24.6, 34.6+y);
+		glVertex2f(25.4, 34.6+y);
+		glVertex2f(25.4, 34.4+y);
+		glEnd();
+	}
+	
+	glBegin(GL_POLYGON);					//Building 5
+	glColor3ub(69, 93, 103);
+	glVertex2f(28, 38);
+	glVertex2f(28, 45);
+	glVertex2f(30, 45);
+	glVertex2f(30, 38);
+	glEnd();
+	
+	glBegin(GL_POLYGON);					//Building 6
+	glColor3ub(59, 81, 90);
+	glVertex2f(29.5, 38);
+	glVertex2f(29.5, 48);
+	glVertex2f(32.5, 48);
+	glVertex2f(32.5, 38);
 	glEnd();
 	
 	glFlush();

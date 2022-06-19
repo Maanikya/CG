@@ -24,7 +24,8 @@ void WindowInit()
 	glutInitWindowPosition(0, 0);
 	glutCreateWindow("Mini Project");
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-	glClearColor(0.62, 0.69, 0.82, 0.0);
+	//glClearColor(0.62, 0.69, 0.82, 0.0);
+	glClearColor(0.478, 0.627, 0.765, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
