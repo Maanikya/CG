@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <math.h>
 #include <GL/glut.h>
+#include "Intro.h"
 
 float sunx=0, suny=50, sunColor=0.0, bk1Color1=0, bk1Color2=0, bk1Color3=0;
 float moonx=0, moony=50, bk2Color1=0, bk2Color2=0, bk2Color3=0, windows=0.0, ground=0, glow1=0, glow2=1;
-float bird=0, bWing=0;
+float bird=0, bWing=0, shine1=0, shine2=0;
 float shd=0.1, bk1=0, bk2=0;
 int slide;
 
@@ -17,6 +18,7 @@ void EffielTower();
 void Stars();
 void Stars1();
 void Stars2();
+void seaShine();
 void Timer1();
 void Timer2();
 void Timer3();
@@ -46,6 +48,7 @@ void WindowInit()
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glOrtho(0.0, 100.0, 0.0, 100.0, -10.0, 10.0);
+	Intro();
 	glutReshapeFunc(myReshape);
 	glutDisplayFunc(Display);
 	glEnable(GL_DEPTH_TEST);
@@ -59,22 +62,20 @@ void WindowInit()
 void Display() {
 	
 	if(slide == 1) {
-	
+		
 		Display1();
-		//Timer1(0);
-		//glutTimerFunc(40, Timer1, 0);
-		//glutPostRedisplay();
 	}
 		
 	else if(slide == 2) {
 
 		Display2();
-		//glutPostRedisplay();
+		
 	}
 		
 	else if(slide == 3) {
+		
 		Display3();
-		//Timer3();
+		
 	}
 }
 
@@ -84,22 +85,20 @@ void Keyboard(unsigned char key, int x, int y) {
 		
 		sunx=0, suny=50, sunColor=0.0, bk1Color1=0, bk1Color2=0, bk1Color3=0, shd=0.1, bk1=0, bk2=0;
 		slide = 1;
-		//Timer1(0);	
-		//glutPostRedisplay();
 	}
 	
 	else if(key == '2') {
 		
-		moonx=0, moony=50, bk2Color1=0.3, bk2Color2=0.2, bk2Color3=0.1, shd=0.1, bk1=0, bk2=0, windows=0.0, ground=0, glow1=0, glow2=1;
-		slide = 2;
-		//Timer2(0);
-		//glutPostRedisplay(); 
+		bird=0, bWing=0, shine1=0, shine2=0;
+		slide = 3;
+
 	}
 	
 	else if(key == '3') {
-		bird=0, bWing=0;
-		slide = 3;
-		//glutPostRedisplay();
+		
+		moonx=0, moony=50, bk2Color1=0.3, bk2Color2=0.2, bk2Color3=0.1, shd=0.1, bk1=0, bk2=0, windows=0.0, ground=0, glow1=0, glow2=1;
+		slide = 2;
+
 	}
 	
 	glutPostRedisplay();
@@ -154,9 +153,9 @@ void Timer2(int v) {
 	moony = sqrt((50*50)-((moonx-50)*(moonx-50)) + 50);
 	moony += 40;
 	
-	if(moonx >= 70)													//Sun Path
+	if(moonx >= 70)													//Moon Path
 		moonx=moonx;
-	else															//Sun Path		
+	else															//Moon Path		
 		moonx += 0.8;
 		
 		
@@ -196,13 +195,13 @@ void Timer2(int v) {
 		windows += 0.01;
 		 
 		 
-	if(glow1 <= 1)
+	if(glow1 <= 1)													//Star Shine 1
 		glow1 += 0.01;
 	else
 		glow1 = 0;
 		
 		
-	if(glow2 <= 1)
+	if(glow2 <= 1)													//Star Shine 2
 		glow2 += 0.015;
 	else
 		glow2 = 0;
@@ -213,16 +212,28 @@ void Timer2(int v) {
 
 void Timer3(int v) {
 	
-	if(bWing <= 1)
+	if(bWing <= 1)													//Bird Wing
 		bWing += 0.03;
 	else
 		bWing = 0;
 
 
-	if(bird >= 80)
+	if(bird >= 80)													//Bird
 		bird = 0;
 	else
 		bird += 0.3;
+		
+		
+	if(shine1 <= 1)													//Water Shine 1
+		shine1 += 0.03;
+	else
+		shine1 = 0;
+		
+		
+	if(shine2 <= 1)													//Water Shine 2
+		shine2 += 0.04;
+	else
+		shine2 = 0;
 	
 	glutPostRedisplay();
 	glutTimerFunc(40, Timer3, 0); 	
@@ -2455,6 +2466,9 @@ void Display3() {
 	glVertex3f(80.5-bird, 57+bird*0.2, -4);
 	glEnd();
 	
+	//SEA SHINE
+	seaShine();
+	
 	// LAKE BORDER
 	
 	glLineWidth(4);										//Lake Border
@@ -2646,7 +2660,6 @@ void Display3() {
 	glVertex3f(100, 0, -8);
 	glEnd();
 		
-	
 	glFlush();
 	
 }
@@ -2887,6 +2900,97 @@ void Stars2() {
 	glutSolidSphere(0.4, 40, 40);
 	glPopMatrix();
 	
+}
+
+void seaShine() {
+	
+	for(float y=0; y<=36; y+=5) {
+		glColor3f(1.0, 1.0, 1.0);						//Sea Shine 1
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+		glPushMatrix();
+		glTranslatef(1, 42+y, -9.0-shine1*0.8);
+		glScalef(0.4, 0.3, 1.0);
+		glutSolidSphere(1, 100, 100);
+		glPopMatrix();
+	}
+	
+	for(float y=0; y<=36; y+=5) {
+		glColor3f(1.0, 1.0, 1.0);						//Sea Shine 2
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+		glPushMatrix();
+		glTranslatef(2.3, 40+y, -9.0-shine2*0.9);
+		glScalef(0.45, 0.3, 1.0);
+		glutSolidSphere(1, 100, 100);
+		glPopMatrix();
+	}
+	
+	for(float y=0; y<=36; y+=5) {
+		glColor3f(1.0, 1.0, 1.0);						//Sea Shine 3
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+		glPushMatrix();
+		glTranslatef(4, 42+y, -9.0-shine1*0.8);
+		glScalef(0.5, 0.3, 1.0);
+		glutSolidSphere(1, 100, 100);
+		glPopMatrix();
+	}
+	
+	for(float y=0; y<=36; y+=5) {
+		glColor3f(1.0, 1.0, 1.0);						//Sea Shine 4
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+		glPushMatrix();
+		glTranslatef(6, 39+y, -9.0-shine2*0.9);
+		glScalef(0.6, 0.3, 1.0);
+		glutSolidSphere(1, 100, 100);
+		glPopMatrix();
+	}
+	
+	for(float y=0; y<=36; y+=5) {
+		glColor3f(1.0, 1.0, 1.0);						//Sea Shine 5
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+		glPushMatrix();
+		glTranslatef(8, 41+y, -9.0-shine1*0.8);
+		glScalef(0.7, 0.3, 1.0);
+		glutSolidSphere(1, 100, 100);
+		glPopMatrix();
+	}
+	
+	for(float y=0; y<=36; y+=5) {
+		glColor3f(1.0, 1.0, 1.0);						//Sea Shine 6
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+		glPushMatrix();
+		glTranslatef(10, 38+y, -9.0-shine2*0.9);
+		glScalef(0.8, 0.32, 1.0);
+		glutSolidSphere(1, 100, 100);
+		glPopMatrix();
+	}
+	
+	for(float y=0; y<=36; y+=6) {
+		glColor3f(1.0, 1.0, 1.0);						//Sea Shine 7
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+		glPushMatrix();
+		glTranslatef(12, 40+y, -9.0-shine1*0.8);
+		glScalef(0.9, 0.3, 1.0);
+		glutSolidSphere(1, 100, 100);
+		glPopMatrix();
+	}
+	
+	for(float y=0; y<=36; y+=6) {
+		glColor3f(1.0, 1.0, 1.0);						//Sea Shine 8
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+		glPushMatrix();
+		glTranslatef(14, 38+y, -9.0-shine2*0.9);
+		glScalef(1.0, 0.3, 1.0);
+		glutSolidSphere(1, 100, 100);
+		glPopMatrix();
+	}
 }
 
 void myReshape(int w, int h)
