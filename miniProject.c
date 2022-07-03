@@ -45,6 +45,7 @@ void WindowInit()
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glOrtho(0.0, 100.0, 0.0, 100.0, -10.0, 10.0);
+	glutReshapeFunc(myReshape);
 	glutDisplayFunc(Display);
 	glEnable(GL_DEPTH_TEST);
 	glutKeyboardFunc(Keyboard);
@@ -2044,10 +2045,10 @@ void Display3() {
 	
 	glBegin(GL_POLYGON);								//House 1 Left Top
 	glColor3f(0.604, 0.463, 0.353);
-	glVertex3f(7, 24, 3);
-	glVertex3f(10, 27, 3);
-	glVertex3f(12, 24, 3);
-	glVertex3f(9, 21, 3);
+	glVertex3f(7, 24, -5);
+	glVertex3f(10, 27, -5);
+	glVertex3f(12, 24, -5);
+	glVertex3f(9, 22, -5);
 	glEnd();
 	
 	glBegin(GL_POLYGON);								//House 1 Right Top
@@ -2064,6 +2065,22 @@ void Display3() {
 	glVertex3f(7.5, 23.5, -5);
 	glVertex3f(10, 22, -5);
 	glVertex3f(10, 17.5, -5);
+	glEnd();
+	
+	glBegin(GL_POLYGON);								//House 1 Window
+	glColor3f(0.3, 0.3, 0.3);
+	glVertex3f(8.3, 20.5, -4);
+	glVertex3f(8.3, 21.7, -4);
+	glVertex3f(9, 21.3, -4);
+	glVertex3f(9, 20, -4);
+	glEnd();
+	
+	glBegin(GL_POLYGON);								//House 1 Door
+	glColor3f(0.3, 0.3, 0.3);
+	glVertex3f(11.8, 18, -5);
+	glVertex3f(11.8, 21.5, -5);
+	glVertex3f(12.5, 21.5, -5);
+	glVertex3f(12.5, 18, -5);
 	glEnd();
 	
 	glBegin(GL_POLYGON);								//House 1 Front
@@ -2099,6 +2116,14 @@ void Display3() {
 	glVertex3f(13, 14, -4);
 	glEnd();
 	
+	glBegin(GL_POLYGON);								//House 2 Window
+	glColor3f(0.3, 0.3, 0.3);
+	glVertex3f(10.7, 14.5, -3.8);
+	glVertex3f(10.7, 15.7, -3.8);
+	glVertex3f(11.5, 15.7, -3.8);
+	glVertex3f(11.5, 14.5, -3.8);
+	glEnd();
+	
 	glBegin(GL_POLYGON);								//House 2 Body Right
 	glColor3ub(162, 178, 191);
 	glVertex3f(13, 14, -4);
@@ -2107,6 +2132,200 @@ void Display3() {
 	glVertex3f(14.5, 14.7, -4);
 	glEnd();
 	
+	glLineWidth(6);										//Light Pole 1
+	glBegin(GL_LINES);
+	glColor3ub(52, 58, 34);
+	glVertex3f(22, 13, -5);
+	glVertex3f(22, 34, -5);
+	glEnd();
+	
+	glLineWidth(6);										//Light Pole Horizontal
+	glBegin(GL_LINES);
+	glColor3ub(52, 58, 34);
+	glVertex3f(21, 31, -5);
+	glVertex3f(23, 32, -5);
+	glEnd();
+	
+	glBegin(GL_TRIANGLES);								//House 3
+	glColor3ub(132, 147, 156);
+	glVertex3f(18, 16, -4.9);
+	glVertex3f(23, 22, -4.9);
+	glVertex3f(28, 16, -4.9);
+	glEnd();
+	
+	glBegin(GL_TRIANGLES);								//House 4
+	glColor3ub(164, 147, 134);
+	glVertex3f(18, 15, -4.8);
+	glVertex3f(23, 21, -4.8);
+	glVertex3f(28, 15, -4.8);
+	glEnd();
+	
+	glBegin(GL_TRIANGLES);								//House 5 Top
+	glColor3ub(122, 100, 91);
+	glVertex3f(17.5, 13.5, -4.7);
+	glVertex3f(22.5, 19.5, -4.7);
+	glVertex3f(27.5, 13.5, -4.7);
+	glEnd();
+	
+	glBegin(GL_POLYGON);								//House 5 Top Right
+	glColor3ub(142, 126, 118);
+	glVertex3f(22.5, 19.5, -4.7);
+	glVertex3f(29, 23, -4.7);
+	glVertex3f(33.5, 17.5, -4.7);
+	glVertex3f(27.5, 13.5, -4.7);
+	glEnd();
+	
+	glBegin(GL_POLYGON); 								//House 5 Left
+	glColor3ub(169, 136, 102);
+	glVertex3f(18.5, 6, -4.5);
+	glVertex3f(18.5, 13.5, -4.5);
+	glVertex3f(27, 13.5, -4.5);
+	glVertex3f(27, 6, -4.5);
+	glEnd();
+	
+	glBegin(GL_POLYGON); 								//House 5 Right
+	glColor3ub(169, 136, 102);
+	glVertex3f(27, 6, -5);
+	glVertex3f(27, 13.5, -5);
+	glVertex3f(33, 17.5, -5);
+	glVertex3f(33, 10, -5);
+	glEnd();
+	
+	glBegin(GL_POLYGON); 								//House 5 Door
+	glColor3f(0.2, 0.2, 0.2);
+	glVertex3f(21, 6, -4);
+	glVertex3f(21, 10, -4);
+	glVertex3f(23, 10, -4);
+	glVertex3f(23, 6, -4);
+	glEnd();
+	
+	glBegin(GL_POLYGON); 								//House 5 Window
+	glColor3f(0.3, 0.3, 0.3);
+	glVertex3f(29.5, 10.5, -4.5);
+	glVertex3f(29.5, 12, -4.5);
+	glVertex3f(31, 13, -4.5);
+	glVertex3f(31, 11.5, -4.5);
+	glEnd();
+	
+	glBegin(GL_POLYGON); 								//House 6
+	glColor3ub(145, 88, 81);
+	glVertex3f(5, 0, -5);
+	glVertex3f(6, 6, -5);
+	glVertex3f(13, 6, -5);
+	glVertex3f(12, 0, -5);
+	glEnd();
+	
+	glBegin(GL_POLYGON); 								//House 7 Top Left
+	glColor3ub(148, 135, 118);
+	glVertex3f(33, 26, -5);
+	glVertex3f(35, 28, -5);
+	glVertex3f(36, 26.5, -5);
+	glVertex3f(34, 25, -5);
+	glEnd();
+	
+	glBegin(GL_TRIANGLES); 								//House 7 Triangle
+	glColor3ub(125, 108, 97);
+	glVertex3f(34, 25, -5);
+	glVertex3f(35, 28, -5);
+	glVertex3f(37, 25, -5);
+	glEnd();
+	
+	glBegin(GL_POLYGON); 								//House 7 Top Right
+	glColor3ub(148, 135, 118);
+	glVertex3f(33, 26, -5);
+	glVertex3f(35, 28, -5);
+	glVertex3f(36, 26.5, -5);
+	glVertex3f(34, 25, -5);
+	glEnd();
+	
+	glBegin(GL_POLYGON); 								//House 7 Body left
+	glColor3ub(134, 121, 85);
+	glVertex3f(33.2, 23, -5);
+	glVertex3f(33.2, 26, -5);
+	glVertex3f(34, 25, -5);
+	glVertex3f(34, 22, -5);
+	glEnd();
+	
+	glBegin(GL_POLYGON); 								//House 7 Body Right
+	glColor3ub(134, 121, 85);
+	glVertex3f(34, 22, -5);
+	glVertex3f(34, 25, -5);
+	glVertex3f(37, 25, -5);
+	glVertex3f(37, 22, -5);
+	glEnd();
+	
+	glBegin(GL_POLYGON); 								//House 7 Door
+	glColor3f(0.3, 0.3, 0.3);
+	glVertex3f(35, 22, -4.5);
+	glVertex3f(35, 23.5, -4.5);
+	glVertex3f(36, 23.5, -4.5);
+	glVertex3f(36, 22, -4.5);
+	glEnd();
+	
+	glBegin(GL_POLYGON);								//House 8 Left Roof Left Beeding
+	glColor3ub(179, 174, 180);
+	glVertex3f(34.5, 5, -4);
+	glVertex3f(36.5, 15, -4);
+	glVertex3f(37, 15, -4);
+	glVertex3f(35, 5, -4);
+	glEnd();
+	
+	glBegin(GL_POLYGON);								//House 8 Left Roof
+	glColor3ub(173, 117, 116);
+	glVertex3f(35, 5, -4);
+	glVertex3f(37, 15, -4);
+	glVertex3f(53, 15, -4);
+	glVertex3f(51, 5, -4);
+	glEnd();
+	
+	glBegin(GL_POLYGON);								//House 8 Left Roof Right Beeding
+	glColor3ub(179, 174, 180);
+	glVertex3f(51, 5, -4);
+	glVertex3f(53, 15, -4);
+	glVertex3f(53, 14, -4);
+	glVertex3f(52, 5, -4);
+	glEnd();
+	
+	glBegin(GL_POLYGON);								//House 8 Right Roof Right Beeding
+	glColor3ub(179, 174, 180);
+	glVertex3f(52.5, 14, -4);
+	glVertex3f(53, 15, -4);
+	glVertex3f(55, 5, -4);
+	glVertex3f(54, 5, -4);
+	glEnd();
+	
+	glBegin(GL_POLYGON);								//House 8 Body
+	glColor3ub(132, 135, 171);
+	glVertex3f(35.5, 0, -5);
+	glVertex3f(35.5, 10, -5);
+	glVertex3f(53, 12, -5);
+	glVertex3f(54.5, 5, -5);
+	glVertex3f(54.5, 0, -5);
+	glEnd();
+	
+	glBegin(GL_POLYGON);								//House 8 Door
+	glColor3ub(80, 79, 80);
+	glVertex3f(52.5, 0, -4);
+	glVertex3f(52.5, 5, -4);
+	glVertex3f(53.5, 5, -4);
+	glVertex3f(53.5, 0, -4);
+	glEnd();
+	
+	glBegin(GL_POLYGON);								//House 8 Top 1
+	glColor3ub(137, 126, 135);
+	glVertex3f(52, 15, -5);
+	glVertex3f(52, 18, -5);
+	glVertex3f(53, 18, -5);
+	glVertex3f(53, 15, -5);
+	glEnd();
+	
+	glBegin(GL_TRIANGLES);								//House 8 Top 1
+	glColor3ub(108, 103, 109);
+	glVertex3f(52, 18, -5);
+	glVertex3f(52.5, 22, -5);
+	glVertex3f(53, 18, -5);
+	glEnd();
+		
 	// LAKE BORDER
 	
 	glLineWidth(4);										//Lake Border
@@ -2539,4 +2758,18 @@ void Stars2() {
 	glutSolidSphere(0.4, 40, 40);
 	glPopMatrix();
 	
+}
+
+void myReshape(int w, int h)
+{
+	glViewport(0, 0, w, h);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	if(w <= h)
+		glOrtho(0.0, 52, 0.0*h/(GLfloat)w, 100.0*h/(GLfloat)w, -10.0, 10.0);
+
+	else
+		glOrtho(0.0*(GLfloat)w/(GLfloat)h, 52*(GLfloat)w/(GLfloat)h, 0.0, 100.0, -10.0, 10.0);
+
+	glMatrixMode(GL_MODELVIEW);
 }
