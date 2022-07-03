@@ -1,0 +1,9 @@
+for(float y=0; y<13; y+=1.2) {
+		glBegin(GL_POLYGON);				//Building 6 Windows
+		glColor3f(0.161, 0.188, 0.2);	
+		glVertex2f(30.5, 39+y);
+		glVertex2f(30.5, 39.6+y);
+		glVertex2f(31.5, 34.6+y);
+		glVertex2f(31.5, 39+y);
+		glEnd();
+}
