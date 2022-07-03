@@ -192,18 +192,12 @@ void Display1() {
 	glClear(GL_COLOR_BUFFER_BIT);				
 	
 	glBegin(GL_POLYGON);							//Background
-	//glColor3ub(147, 167, 180);
-	//glColor3ub(67+ground, 87+ground, 100+ground);
 	glColor3ub(ground*1.8375, ground*2.0875, ground*2.25);
 	glVertex3i(0, 43, -9);
-	//glColor3ub(164, 164, 187);
-	//glColor3ub(84+ground, 84+ground, 107+ground);
 	glColor3ub(ground*2.05, ground*2.05, ground*2.3375);
 	glVertex3i(100, 43, -9);
-	//glColor3ub(43, 56, 64);
 	glColor3ub(ground*0.5375, ground*0.7, ground*0.8);
 	glVertex3i(100, 0, -9);
-	//glColor3ub(31, 48, 60);
 	glColor3ub(ground*0.3875, ground*0.6, ground*0.75);
 	glVertex3i(0, 0, -9);
 	glEnd();
@@ -1091,7 +1085,7 @@ void Display2() {
 	glClearColor(bk2Color1, bk2Color2, bk2Color3, 0.0);						//Sky
 	glClear(GL_COLOR_BUFFER_BIT);				
 	
-	glBegin(GL_POLYGON);							//Background
+	glBegin(GL_POLYGON);													//Background
 	glColor3ub(100-ground, 110-ground, 120-ground);
 	glVertex3i(0, 43, -9);
 	glColor3ub(134-ground*0.5, 134-ground*0.3, 157-ground*0.3);
