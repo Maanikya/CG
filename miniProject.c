@@ -45,11 +45,11 @@ void WindowInit()
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glOrtho(0.0, 100.0, 0.0, 100.0, -10.0, 10.0);
-	glutDisplayFunc(Display3);
+	glutDisplayFunc(Display);
 	glEnable(GL_DEPTH_TEST);
-	//glutKeyboardFunc(Keyboard);
-	//Timer1(0);
-	//Timer2(0);
+	glutKeyboardFunc(Keyboard);
+	Timer1(0);
+	Timer2(0);
 	glutMainLoop();
 }
 
@@ -69,10 +69,10 @@ void Display() {
 		//glutPostRedisplay();
 	}
 		
-	/*else if(slide == 3) {
+	else if(slide == 3) {
 		Display3();
-		Timer3();
-	}*/
+		//Timer3();
+	}
 }
 
 void Keyboard(unsigned char key, int x, int y) {
@@ -93,10 +93,10 @@ void Keyboard(unsigned char key, int x, int y) {
 		//glutPostRedisplay(); 
 	}
 	
-	/*else if(key == '3') {
+	else if(key == '3') {
 		slide = 3;
-		glutPostRedisplay();
-	}*/
+		//glutPostRedisplay();
+	}
 	
 	glutPostRedisplay();
 }
@@ -210,7 +210,7 @@ void Timer2(int v) {
 void Display1() {
 	
 	glClearColor(bk1Color1, bk1Color2, bk1Color3, 0.0);						//Sky
-	glClear(GL_COLOR_BUFFER_BIT);	
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	
 	
 	glBegin(GL_POLYGON);							//Background
 	glColor3ub(ground*1.8375, ground*2.0875, ground*2.25);
@@ -1104,7 +1104,7 @@ void Display1() {
 void Display2() {
 	
 	glClearColor(bk2Color1, bk2Color2, bk2Color3, 0.0);						//Sky
-	glClear(GL_COLOR_BUFFER_BIT);				
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);				
 	
 	glBegin(GL_POLYGON);													//Background
 	glColor3ub(100-ground, 110-ground, 120-ground);
@@ -2073,6 +2073,38 @@ void Display3() {
 	glVertex3f(12, 24, -5);
 	glVertex3f(14, 23.5, -5);
 	glVertex3f(14, 19, -5);
+	glEnd();
+	
+	glBegin(GL_POLYGON);								//House 2 Left Top
+	glColor3ub(158, 129, 95);
+	glVertex3f(9, 16, -4);
+	glVertex3f(10, 19, -4);
+	glVertex3f(14, 19, -4);
+	glVertex3f(13, 16, -4);
+	glEnd();
+	
+	glBegin(GL_POLYGON);								//House 2 Right Top
+	glColor3ub(158, 129, 95);
+	glVertex3f(11, 17, -4);
+	glVertex3f(10, 19, -4);
+	glVertex3f(14, 19, -4);
+	glVertex3f(15, 17, -4);
+	glEnd();
+	
+	glBegin(GL_POLYGON);								//House 2 Body Left
+	glColor3ub(162, 178, 191);
+	glVertex3f(9.5, 14, -4);
+	glVertex3f(9.5, 16, -4);
+	glVertex3f(13, 16, -4);
+	glVertex3f(13, 14, -4);
+	glEnd();
+	
+	glBegin(GL_POLYGON);								//House 2 Body Right
+	glColor3ub(162, 178, 191);
+	glVertex3f(13, 14, -4);
+	glVertex3f(13, 17.2, -4);
+	glVertex3f(14.5, 17.2, -4);
+	glVertex3f(14.5, 14.7, -4);
 	glEnd();
 	
 	// LAKE BORDER
