@@ -2044,44 +2044,36 @@ void Display3() {
 	
 	glBegin(GL_POLYGON);								//House 1 Left Top
 	glColor3f(0.604, 0.463, 0.353);
-	glVertex3f(5, 20, 3);
-	glVertex3f(8, 23, 3);
-	glVertex3f(10, 20, 3);
-	glVertex3f(7, 17, 3);
+	glVertex3f(7, 24, 3);
+	glVertex3f(10, 27, 3);
+	glVertex3f(12, 24, 3);
+	glVertex3f(9, 21, 3);
 	glEnd();
 	
 	glBegin(GL_POLYGON);								//House 1 Right Top
 	glColor3ub(154, 118, 90);
-	glVertex3f(8, 23, -5);
-	glVertex3f(12, 21, -5);
-	glVertex3f(13, 19, -5);
-	glVertex3f(10, 20, -5);
+	glVertex3f(10, 27, -5);
+	glVertex3f(14, 25, -5);
+	glVertex3f(15, 23, -5);
+	glVertex3f(12, 24, -5);
 	glEnd();
 	
 	glBegin(GL_POLYGON);								//House 1 Left Front
 	glColor3ub(141, 132, 107);
-	glVertex3f(5.5, 15.5, -5);
-	glVertex3f(5.5, 19.5, -5);
-	glVertex3f(8, 18, -5);
-	glVertex3f(8, 13.5, -5);
+	glVertex3f(7.5, 19.5, -5);
+	glVertex3f(7.5, 23.5, -5);
+	glVertex3f(10, 22, -5);
+	glVertex3f(10, 17.5, -5);
 	glEnd();
 	
 	glBegin(GL_POLYGON);								//House 1 Front
 	glColor3ub(141, 132, 107);
-	glVertex3f(8, 13.5, -5);
-	glVertex3f(8, 18, -5);
-	glVertex3f(10, 20, -5);
-	glVertex3f(12, 19.5, -5);
-	glVertex3f(12, 15, -5);
+	glVertex3f(10, 17.5, -5);
+	glVertex3f(10, 22, -5);
+	glVertex3f(12, 24, -5);
+	glVertex3f(14, 23.5, -5);
+	glVertex3f(14, 19, -5);
 	glEnd();
-	
-	/*glBegin(GL_POLYGON);								
-	glColor3ub(220, 215, 215);
-	glVertex3f(0, 0, -8);
-	glVertex3f(0, 18, -8);
-	glVertex3f(100, 18, -8);
-	glVertex3f(100, 0, -8);
-	glEnd();*/
 	
 	// LAKE BORDER
 	
