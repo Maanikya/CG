@@ -11,7 +11,7 @@ void WindowInit();
 void Display();
 void Display1();
 void Display2();
-//void Display3();
+void Display3();
 void EffielTower();
 void Stars();
 void Stars1();
@@ -45,9 +45,8 @@ void WindowInit()
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glOrtho(0.0, 100.0, 0.0, 100.0, -10.0, 10.0);
-	glutDisplayFunc(Display);
-	glutKeyboardFunc(Keyboard);
-	//glutIdleFunc(Stars);
+	glutDisplayFunc(Display3);
+	//glutKeyboardFunc(Keyboard);
 	Timer1(0);
 	Timer2(0);
 	glutMainLoop();
@@ -100,13 +99,6 @@ void Keyboard(unsigned char key, int x, int y) {
 	
 	glutPostRedisplay();
 }
-
-/*void Stars() {
-	
-	
-		
-	glutPostRedisplay();
-}*/
 
 void Timer1(int v) {
 	
@@ -199,10 +191,10 @@ void Timer2(int v) {
 		windows += 0.01;
 		 
 		 
-	if(glow1 >= 1)
-		glow1 = 0;
+	if(glow1 <= 1)
+		glow1 += 0.01;
 	else
-		glow1 += 0.015;
+		glow1 = 0;
 		
 		
 	if(glow2 <= 1)
@@ -2016,6 +2008,26 @@ void Display2() {
 	
 	glutSwapBuffers;
 	glFlush();
+}
+
+void Display3() {
+	
+	glClearColor(1.0, 1.0, 1.0, 0.0);						//Sky
+	glClear(GL_COLOR_BUFFER_BIT);				
+	
+	glBegin(GL_POLYGON);													//Lake
+	glColor3ub(201, 194, 222);
+	glVertex3i(0, 75, -9);
+	glColor3ub(174, 197, 223);
+	glVertex3i(100, 75, -9);
+	glColor3ub(131, 176, 212);
+	glVertex3i(100, 25, -9);
+	glColor3ub(160, 182, 223);
+	glVertex3i(0, 25, -9);
+	glEnd();
+	
+	glFlush();
+	
 }
 
 void EffielTower(){
