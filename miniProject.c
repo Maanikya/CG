@@ -4,6 +4,7 @@
 
 float sunx=0, suny=50, sunColor=0.0, bk1Color1=0, bk1Color2=0, bk1Color3=0;
 float moonx=0, moony=50, bk2Color1=0, bk2Color2=0, bk2Color3=0, windows=0.0, ground=0, glow1=0, glow2=1;
+float bird=0, bWing=0;
 float shd=0.1, bk1=0, bk2=0;
 int slide;
 
@@ -18,7 +19,7 @@ void Stars1();
 void Stars2();
 void Timer1();
 void Timer2();
-//void Timer3();
+void Timer3();
 void Keyboard(unsigned char key, int x, int y);
 void myReshape(int w, int h);
 
@@ -51,6 +52,7 @@ void WindowInit()
 	glutKeyboardFunc(Keyboard);
 	Timer1(0);
 	Timer2(0);
+	Timer3(0);
 	glutMainLoop();
 }
 
@@ -95,6 +97,7 @@ void Keyboard(unsigned char key, int x, int y) {
 	}
 	
 	else if(key == '3') {
+		bird=0, bWing=0;
 		slide = 3;
 		//glutPostRedisplay();
 	}
@@ -206,6 +209,24 @@ void Timer2(int v) {
 	
 	glutTimerFunc(40, Timer2, 0); 	
 	glutPostRedisplay();
+}
+
+void Timer3(int v) {
+	
+	if(bWing <= 1)
+		bWing += 0.03;
+	else
+		bWing = 0;
+
+
+	if(bird >= 80)
+		bird = 0;
+	else
+		bird += 0.3;
+	
+	glutPostRedisplay();
+	glutTimerFunc(40, Timer3, 0); 	
+	
 }
 
 void Display1() {
@@ -2014,7 +2035,7 @@ void Display2() {
 
 void Display3() {
 		
-	glClearColor(1.0, 1.0, 1.0, 0.0);					//Sky
+	//glClearColor(1.0, 1.0, 1.0, 0.0);					//Sky
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);				
 	
 	glBegin(GL_POLYGON);								//Lake
@@ -2325,7 +2346,115 @@ void Display3() {
 	glVertex3f(52.5, 22, -5);
 	glVertex3f(53, 18, -5);
 	glEnd();
-		
+	
+	glBegin(GL_POLYGON);								//House 9 Top Left
+	glColor3ub(115, 109, 108);
+	glVertex3f(60, 11, -4);
+	glVertex3f(63, 16, -4);
+	glVertex3f(69.5, 13, -4);
+	glVertex3f(66.5, 8, -4);
+	glEnd();
+	
+	glLineWidth(10);
+	glBegin(GL_LINES);									//House 9 Top Left Beeding
+	glColor3ub(80, 83, 81);
+	glVertex3f(66.5, 7.5, -5);
+	glVertex3f(69.5, 12.5, -5);
+	glEnd();
+	
+	glBegin(GL_LINES);									//House 9 Top Right Beeding
+	glColor3ub(80, 83, 81);
+	glVertex3f(69.5, 12.5, -5);
+	glVertex3f(72.5, 7.8, -5);
+	glEnd();
+	
+	glBegin(GL_POLYGON);								//House 9 Top Body Left
+	glColor3ub(218, 208, 214);
+	glVertex3f(61, 5, -5);
+	glVertex3f(61, 12, -5);
+	glVertex3f(68, 10, -5);
+	glVertex3f(68, 0, -5);
+	glEnd();
+	
+	glBegin(GL_POLYGON);								//House 9 Top Body Front
+	glColor3ub(198, 186, 159);
+	glVertex3f(67.1, 0, -4);
+	glVertex3f(67.1, 8, -4);
+	glVertex3f(69.5, 12, -4);
+	glVertex3f(72, 8, -4);
+	glVertex3f(72, 0, -4);
+	glEnd();
+	
+	glBegin(GL_POLYGON);								//House 9 Lower Top Left
+	glColor3ub(90, 91, 82);
+	glVertex3f(59, 6, -4);
+	glVertex3f(61, 8, -4);
+	glVertex3f(65.5, 5, -4);
+	glVertex3f(63.5, 3, -4);
+	glEnd();
+	
+	glBegin(GL_POLYGON);								//House 9 Lower Left body
+	glColor3ub(75, 66, 29);
+	glVertex3f(60, 0, -4);
+	glVertex3f(60, 6, -4);
+	glVertex3f(65.5, 5, -4);
+	glVertex3f(65.5, 0, -4);
+	glEnd();
+	
+	glBegin(GL_POLYGON);								//House 9 Door									
+	glColor3f(0.3, 0.3, 0.3);
+	glVertex3f(68.5, 0, -3.9);
+	glVertex3f(68.5, 6, -3.9);
+	glVertex3f(70.5, 6, -3.9);
+	glVertex3f(70.5, 0, -3.9);
+	glEnd();
+	
+	glLineWidth(6);										//Pole 2 Vertical
+	glBegin(GL_LINES);
+	glColor3ub(93, 77, 65);
+	glVertex3f(80, 5, -4);
+	glVertex3f(80, 20, -4);
+	glEnd();
+	
+	glLineWidth(5);										//Pole 2 Horizontal
+	glBegin(GL_LINES);
+	glVertex3f(79, 17.5, -4);
+	glVertex3f(81, 19, -4);
+	glEnd();
+	
+	glLineWidth(2);										//Current Line
+	glBegin(GL_LINE_STRIP);
+	glColor3ub(80, 60, 26);
+	glVertex3f(22, 32, -4.5);
+	glVertex3f(33, 20, -4.5);
+	glVertex3f(38, 16, -4.5);
+	glVertex3f(45, 14, -4.5);
+	glVertex3f(55, 13, -4.5);
+	glVertex3f(65, 14, -4.5);
+	glVertex3f(80, 18, -4.5);
+	glEnd();
+	
+	glBegin(GL_TRIANGLES);								//Bird
+	glColor3f(0.1, 0.1, 0.1);
+	glVertex3f(80-bird, 57+bird*0.2, -4);
+	glVertex3f(80.3-bird, 58.5-bWing+(bird*0.2), -4);
+	glVertex3f(80.5-bird, 57+bird*0.2, -4);
+	glEnd();
+	
+	glBegin(GL_TRIANGLES);								//Bird
+	glColor3f(0.1, 0.1, 0.1);
+	glVertex3f(80-bird, 57+bird*0.2, -4);
+	glVertex3f(81.5-bird, 57+bird*0.2, -4);
+	glVertex3f(80-bird, 56.6+bird*0.2, -4);
+	glEnd();
+	
+	glBegin(GL_TRIANGLES);								//Bird
+	glColor3f(0.1, 0.1, 0.1);
+	glVertex3f(80-bird, 56.6+bird*0.2, -4);
+	glVertex3f(79.8-bird, 57.3-(bWing*2.6)+(bird*0.2), -4);
+	glVertex3f(80.5-bird, 57+bird*0.2, -4);
+	glEnd();
+	
 	// LAKE BORDER
 	
 	glLineWidth(4);										//Lake Border
