@@ -15,6 +15,9 @@ void Intro();
 void Display1();
 void Display2();
 void Display3();
+void ThankYou();
+void output(char *s);
+void output2(char *s);
 void EffielTower();
 void Stars();
 void Stars1();
@@ -43,7 +46,7 @@ void WindowInit()
 {
 	glutInitWindowSize(1920, 1080);
 	glutInitWindowPosition(0, 0);
-	glutCreateWindow("Mini Project");
+	glutCreateWindow("Mini Project 4MT19CS073 4MT19CS122");
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glMatrixMode(GL_PROJECTION);
@@ -82,6 +85,11 @@ void Display() {
 		Display3();
 		
 	}
+	
+	else if(slide == 5) {
+		
+		ThankYou();
+	}
 }
 
 void Keyboard(unsigned char key, int x, int y) {
@@ -109,6 +117,11 @@ void Keyboard(unsigned char key, int x, int y) {
 		
 		moonx=0, moony=50, bk2Color1=0.3, bk2Color2=0.2, bk2Color3=0.1, shd=0.1, bk1=0, bk2=0, windows=0.0, ground=0, glow1=0, glow2=1;
 		slide = 3;
+	}
+	
+	else if(key == '5') {
+		
+		slide = 5;
 	}
 	
 	glutPostRedisplay();
@@ -250,12 +263,12 @@ void Timer3(int v) {
 	
 }
 
-void output(char *s);
-
-void Intro()
-{
+void Intro() {
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	
+	
+	Stars1();
+	Stars2();
 	
 	glPushMatrix();
 	glColor3f(1.0, 0.0, 0.0);
@@ -318,12 +331,6 @@ void Intro()
 	glPopMatrix();
 	
 	glFlush();
-}
-
-void output(char *s)
-{
-	for(int k=0; k<strlen(s); k++)
-		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, s[k]);
 }
 
 void Display1() {
@@ -2748,6 +2755,45 @@ void Display3() {
 		
 	glFlush();
 	
+}
+
+void ThankYou() {
+
+	glClearColor(0.0, 0.0, 0.0, 0.0);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	
+	
+	Stars1();
+	Stars2();
+	
+	glPushMatrix();
+	glColor3f(1.0, 1.0, 0.0);
+	glTranslatef(25.0, 55.0, 0.0);
+	glScalef(0.1, 0.1, 0.1);
+	output2("THANK");
+	glPopMatrix();
+	
+	glPushMatrix();
+	glColor3f(1.0, 1.0, 0.0);
+	glTranslatef(34.0, 40.0, 0.0);
+	glScalef(0.1, 0.1, 0.1);
+	output2("YOU");
+	glPopMatrix();
+	
+	glFlush();	
+}
+
+void output(char *s) {
+	
+	for(int k=0; k<strlen(s); k++)
+		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, s[k]);
+}
+
+void output2(char *s) {
+	
+	for(int k=0; k<strlen(s); k++) {
+		glLineWidth(4);
+		glutStrokeCharacter(GLUT_STROKE_MONO_ROMAN, s[k]);
+	}
 }
 
 void EffielTower(){
