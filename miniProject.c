@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <GL/glut.h>
-#include "Intro.h"
+//#include "Intro.h"
 
 float sunx=0, suny=50, sunColor=0.0, bk1Color1=0, bk1Color2=0, bk1Color3=0;
 float moonx=0, moony=50, bk2Color1=0, bk2Color2=0, bk2Color3=0, windows=0.0, ground=0, glow1=0, glow2=1;
@@ -11,6 +11,7 @@ int slide;
 
 void WindowInit();
 void Display();
+void Intro();
 void Display1();
 void Display2();
 void Display3();
@@ -48,8 +49,6 @@ void WindowInit()
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glOrtho(0.0, 100.0, 0.0, 100.0, -10.0, 10.0);
-	Intro();
-	//glutReshapeFunc(myReshape);
 	glutDisplayFunc(Display);
 	glEnable(GL_DEPTH_TEST);
 	glutKeyboardFunc(Keyboard);
@@ -63,16 +62,22 @@ void Display() {
 	
 	if(slide == 1) {
 		
-		Display1();
+		Intro();
 	}
 		
 	else if(slide == 2) {
 
-		Display2();
+		Display1();
 		
 	}
 		
 	else if(slide == 3) {
+		
+		Display2();
+		
+	}
+	
+	else if(slide == 4) {
 		
 		Display3();
 		
@@ -82,23 +87,28 @@ void Display() {
 void Keyboard(unsigned char key, int x, int y) {
 	
 	if(key == '1') {
-		
-		sunx=0, suny=50, sunColor=0.0, bk1Color1=0, bk1Color2=0, bk1Color3=0, shd=0.1, bk1=0, bk2=0;
+				
 		slide = 1;
 	}
 	
 	else if(key == '2') {
 		
-		bird=0, bWing=0, shine1=0, shine2=0;
-		slide = 3;
+		sunx=0, suny=50, sunColor=0.0, bk1Color1=0, bk1Color2=0, bk1Color3=0, shd=0.1, bk1=0, bk2=0;
+		slide = 2;
 
 	}
 	
 	else if(key == '3') {
 		
-		moonx=0, moony=50, bk2Color1=0.3, bk2Color2=0.2, bk2Color3=0.1, shd=0.1, bk1=0, bk2=0, windows=0.0, ground=0, glow1=0, glow2=1;
-		slide = 2;
+		bird=0, bWing=0, shine1=0, shine2=0;
+		slide = 4;
 
+	}
+	
+	else if(key == '4') {
+		
+		moonx=0, moony=50, bk2Color1=0.3, bk2Color2=0.2, bk2Color3=0.1, shd=0.1, bk1=0, bk2=0, windows=0.0, ground=0, glow1=0, glow2=1;
+		slide = 3;
 	}
 	
 	glutPostRedisplay();
@@ -238,6 +248,82 @@ void Timer3(int v) {
 	glutPostRedisplay();
 	glutTimerFunc(40, Timer3, 0); 	
 	
+}
+
+void output(char *s);
+
+void Intro()
+{
+	glClearColor(0.0, 0.0, 0.0, 0.0);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	
+	
+	glPushMatrix();
+	glColor3f(1.0, 0.0, 0.0);
+	glRasterPos3f(34.0, 85.0, 0.0);
+	output("Mangalore Institute of Technology & Engineering");
+	glPopMatrix();
+	
+	glPushMatrix();
+	glColor3f(1.0, 0.0, 1.0);
+	glRasterPos3f(34.0, 70.0, 0.0);
+	output("Department of Computer Science and Engineering");
+	glPopMatrix();
+	
+	glPushMatrix();
+	glColor3f(1.0, 0.0, 1.0);
+	glRasterPos3f(45.0, 55.0, 0.0);
+	output("CG Project On : ");
+	glPopMatrix();
+	
+	glPushMatrix();
+	glColor3f(1.0, 0.0, 1.0);
+	glRasterPos3f(43.0, 45.0, 0.0);
+	output("Animated Time-Lapse");
+	glPopMatrix();
+	
+	glPushMatrix();
+	glColor3f(1.0, 1.0, 1.0);
+	glRasterPos3f(10.5, 33.0, 0.0);
+	output("Maanikya");
+	glPopMatrix();
+	
+	glPushMatrix();
+	glColor3f(1.0, 1.0, 1.0);
+	glRasterPos3f(9.4, 28.0, 0.0);
+	output("4MT19CS073");
+	glPopMatrix();
+	
+	glPushMatrix();
+	glColor3f(1.0, 1.0, 1.0);
+	glRasterPos3f(80.0, 33.0, 0.0);
+	output("Rakshit Poojari");
+	glPopMatrix();
+	
+	glPushMatrix();
+	glColor3f(1.0, 1.0, 1.0);
+	glRasterPos3f(80.5, 28.0, 0.0);
+	output("4MT19CS122");
+	glPopMatrix();
+
+	glPushMatrix();
+	glColor3f(1.0, 1.0, 1.0);
+	glRasterPos3f(40.0, 18.0, 0.0);
+	output("UNDER THE GUIDANCE OF");
+	glPopMatrix();
+	
+	glPushMatrix();
+	glColor3f(1.0, 1.0, 1.0);
+	glRasterPos3f(44.0, 13.0, 0.0);
+	output("MS. SUNITHA N V");
+	glPopMatrix();
+	
+	glFlush();
+}
+
+void output(char *s)
+{
+	for(int k=0; k<strlen(s); k++)
+		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, s[k]);
 }
 
 void Display1() {
