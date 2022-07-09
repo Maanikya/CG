@@ -49,7 +49,7 @@ void WindowInit()
 	glLoadIdentity();
 	glOrtho(0.0, 100.0, 0.0, 100.0, -10.0, 10.0);
 	Intro();
-	glutReshapeFunc(myReshape);
+	//glutReshapeFunc(myReshape);
 	glutDisplayFunc(Display);
 	glEnable(GL_DEPTH_TEST);
 	glutKeyboardFunc(Keyboard);
@@ -245,7 +245,7 @@ void Display1() {
 	glClearColor(bk1Color1, bk1Color2, bk1Color3, 0.0);						//Sky
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	
 	
-	glBegin(GL_POLYGON);							//Background
+	glBegin(GL_POLYGON);													//Background
 	glColor3ub(ground*1.8375, ground*2.0875, ground*2.25);
 	glVertex3i(0, 43, -9);
 	glColor3ub(ground*2.05, ground*2.05, ground*2.3375);
@@ -258,7 +258,7 @@ void Display1() {
 	
 	//BUILDINGS AND WINDOWS
 	
-	glBegin(GL_POLYGON);							//Building 1
+	glBegin(GL_POLYGON);													//Building 1
 	glColor3f(0.34, 0.46, 0.52);	
 	glVertex3f(2, 40, -4);
 	glVertex3f(2, 55, -4);
